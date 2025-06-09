@@ -57,16 +57,10 @@ export default function HomeContent({ initialUser, getCurrentUserAction }: HomeC
           {user.email} さん、TODOアプリへようこそ！
         </p>
         
-        <div className="max-w-md mx-auto bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
-            タスク管理を始めましょう
-          </h3>
-          <p className="text-gray-600 mb-4">
-            新しいタスクを追加して、効率的に管理しましょう
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
-            タスクを追加
-          </button>
+        <div className="max-w-4xl mx-auto">
+          <div id="todo-app-container">
+            {/* TODO functionality will be inserted here */}
+          </div>
         </div>
       </>
     );
@@ -91,7 +85,7 @@ export default function HomeContent({ initialUser, getCurrentUserAction }: HomeC
         </p>
         <a
           href="/auth/login"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-block"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-block cursor-pointer"
         >
           ログイン
         </a>

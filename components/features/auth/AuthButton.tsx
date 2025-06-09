@@ -59,7 +59,7 @@ export default function AuthButton({ getCurrentUserAction, logoutAction }: AuthB
     return (
       <button
         onClick={() => router.push('/auth/login')}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
       >
         ログイン
       </button>
@@ -70,7 +70,7 @@ export default function AuthButton({ getCurrentUserAction, logoutAction }: AuthB
     <div className="relative">
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-medium hover:bg-blue-700 transition-colors"
+        className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-medium hover:bg-blue-700 transition-colors cursor-pointer"
       >
         {user.email.charAt(0).toUpperCase()}
       </button>
@@ -82,7 +82,7 @@ export default function AuthButton({ getCurrentUserAction, logoutAction }: AuthB
           </div>
           <button
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
           >
             ログアウト
           </button>

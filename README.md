@@ -24,11 +24,13 @@
 - 開発サーバーを起動して
 - app配下のページはサーバーコンポーネントにして、components配下にfeaturesフォルダを作ってそこからクライアントコ ンポーネントをimportする構成にして
 - アクションはサーバーコンポーネントのページ側からクライアントコンポーネントにインジェクトするように直して
+- （DESIGN.mdの内容をCLAUDE.mdに移管）
 - サーバーアクションをlib/actionsに切り分けないで、関数の実体をサーバーコンポーネント内に定義して
-
-## 途中操作
-
-- DESIGN.mdの内容をCLAUDE.mdに移管
+- （TODOの設計をCLAUDE.mdに追記）
+- TODO系の機能を実装して
+- トップページを開いたら「 Cannot read properties of undefined (reading 'findMany')」ってなった」
+- TODO編集機能が漏れてる
+- 押せるところは`cursor-pointer`を使って
 
 ## 結果
 

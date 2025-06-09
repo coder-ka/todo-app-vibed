@@ -50,6 +50,13 @@ export interface Login {
     expiredAt: DateTime
     accountId: Account['id']
 }
+
+export interface Todo {
+    id: UUIDv7
+    title: string;
+    note: string;
+    accountId: Account['id']
+}
 ```
 
 ### Application
@@ -69,6 +76,13 @@ export interface Login {
 - ログアウト
   - 右上にアカウントアイコンを置き、ポップアップメニューからログアウト
   - ログアウト後はログイン/サインアップ画面に遷移
+- TODO作成
+  - `title`は必須
+  - `note`は任意
+- TODO一覧
+  - ログインしているアカウント紐づくTODOをリスト表示する
+- TODO編集
+- TODO削除
 
 ### System
 
