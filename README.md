@@ -13,7 +13,22 @@
 
 ## プロンプト履歴
 
-TODO
+- DESIGN.mdを元に認証回りの機能を作成して
+- route.tsじゃなくて、Server Actionsを使うように修正
+- Login error: TypeError: \_\_TURBOPACK\_\_imported\_\_module_\$5b\$project\$5d2f\$node_modules\$2f\$nodemailer\$2f\$lib\$2f\$odemailer\$2e\$js\_\_\$5b\$app\$2d\$rsc\$5d\$\_\_\$28\$ecmascript\$29\_\_.default.createTransporter is not a function
+- メールログインすると認証エラーになる。コンソールには「無効な認証タイプです」と書いてある。
+- トップページで、ログインしている場合は「ようこそ」と表示して、していない場合は「ログインまたはサインアップしてください」として
+- アカウントのポップアップメニュー内のメールアドレスがはみ出してる
+- ログアウトをしてもログイン画面に飛ばない
+- CLAUDE.mdを日本語にして 
+- 開発サーバーを起動して
+- app配下のページはサーバーコンポーネントにして、components配下にfeaturesフォルダを作ってそこからクライアントコ ンポーネントをimportする構成にして
+- アクションはサーバーコンポーネントのページ側からクライアントコンポーネントにインジェクトするように直して
+- サーバーアクションをlib/actionsに切り分けないで、関数の実体をサーバーコンポーネント内に定義して
+
+## 途中操作
+
+- DESIGN.mdの内容をCLAUDE.mdに移管
 
 ## 結果
 
