@@ -25,6 +25,7 @@ model Account {
 
 model Login {
   id        String   @id @default(uuid()) @db.VarChar(36)
+  token     String   @unique @db.VarChar(255)
   expiredAt DateTime @map("expired_at")
   accountId String   @map("account_id") @db.VarChar(36)
   

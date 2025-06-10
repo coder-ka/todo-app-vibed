@@ -1,41 +1,44 @@
 import { cookies } from 'next/headers';
 import { prisma } from './db';
 import { generateUUIDv7 } from './uuid';
+import crypto from 'crypto';
 
 export async function createLoginSession(accountId: string) {
   const loginId = generateUUIDv7();
+  const token = crypto.randomBytes(32).toString('hex'); // Generate secure token
   const expiredAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
 
   await prisma.login.create({
     data: {
       id: loginId,
+      token,
       accountId,
       expiredAt,
     },
   });
 
   const cookieStore = await cookies();
-  cookieStore.set('loginId', loginId, {
+  cookieStore.set('authToken', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   });
 
-  return loginId;
+  return token;
 }
 
 export async function getCurrentUser() {
   const cookieStore = await cookies();
-  const loginId = cookieStore.get('loginId')?.value;
+  const token = cookieStore.get('authToken')?.value;
 
-  if (!loginId) {
+  if (!token) {
     return null;
   }
 
   const login = await prisma.login.findFirst({
     where: {
-      id: loginId,
+      token,
       expiredAt: {
         gt: new Date(),
       },
@@ -50,15 +53,15 @@ export async function getCurrentUser() {
 
 export async function logout() {
   const cookieStore = await cookies();
-  const loginId = cookieStore.get('loginId')?.value;
+  const token = cookieStore.get('authToken')?.value;
 
-  if (loginId) {
-    await prisma.login.delete({
-      where: { id: loginId },
+  if (token) {
+    await prisma.login.deleteMany({
+      where: { token },
     });
   }
 
-  cookieStore.delete('loginId');
+  cookieStore.delete('authToken');
 }
 
 export async function cleanupExpiredLogins() {

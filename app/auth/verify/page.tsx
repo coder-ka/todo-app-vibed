@@ -51,9 +51,12 @@ export default function VerifyPage() {
         };
       } else if (normalizedType === 'login') {
         // For login, find the temporary login record
+        console.log('Looking for login with token:', token);
+        console.log('Expected email:', email);
+        
         const tempLogin = await prisma.login.findFirst({
           where: {
-            id: token,
+            token: token,
             expiredAt: {
               gt: new Date(),
             },
@@ -63,14 +66,24 @@ export default function VerifyPage() {
           },
         });
 
-        if (!tempLogin || tempLogin.account.email !== email) {
+        console.log('Found tempLogin:', tempLogin);
+
+        if (!tempLogin) {
+          console.log('No login record found with token:', token);
+          return {
+            error: '無効なトークンまたは期限切れです',
+          };
+        }
+
+        if (tempLogin.account.email !== email) {
+          console.log('Email mismatch. Expected:', email, 'Found:', tempLogin.account.email);
           return {
             error: '無効なトークンまたは期限切れです',
           };
         }
 
         // Delete the temporary login record
-        await prisma.login.delete({ where: { id: token } });
+        await prisma.login.delete({ where: { id: tempLogin.id } });
 
         // Create a new login session
         await createLoginSession(tempLogin.account.id);

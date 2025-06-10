@@ -29,10 +29,10 @@ export default function LoginForm({ loginAction, signupAction }: LoginFormProps)
       
       if (result.success) {
         setIsSubmitted(true);
-        setMessage(result.message);
+        setMessage(result.message || '');
       } else {
         setIsError(true);
-        setMessage(result.error);
+        setMessage(result.error || 'エラーが発生しました');
       }
     } catch (error) {
       setIsError(true);

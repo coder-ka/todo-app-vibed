@@ -87,7 +87,8 @@ export default function LoginPage() {
       // Create a temporary login record for verification
       await prisma.login.create({
         data: {
-          id: token,
+          id: generateUUIDv7(), // Separate ID for the record
+          token: token, // Use token for verification
           accountId: account.id,
           expiredAt: new Date(Date.now() + 30 * 60 * 1000), // 30 minutes
         },

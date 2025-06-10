@@ -48,6 +48,7 @@ export interface Account {
 export interface Login {
     id: UUIDv7
     expiredAt: DateTime
+    token: string // hidden
     accountId: Account['id']
 }
 
@@ -113,10 +114,11 @@ export interface Todo {
 
 #### 認証
 
-- サインアップあるいはログインに成功すると、`Login`データが作成され、その`id`がクッキー内に設定される。
-- 各リクエストにおいて、設定された`id`を元にDB検索を行い、期限切れをしていない`Login`データが存在すれば、認証成功とする。
+- サインアップあるいはログインに成功すると、`Login`データが作成され、その`token`がクッキー内に設定される。
+- 各リクエストにおいて、設定された`token`を元にDB検索を行い、期限切れをしていない`Login`データが存在すれば、認証成功とする。
 - ユーザー情報が必要な場合は、`Login.accountId`を元に引いてくることができる。
 - ログアウト時は、`Login`データを削除する。
+- `token`は発行時にURLパラメータにのみ設定してよく、データベースから取得してはならない。クッキーから取得した`token`を絞り込み条件で比較するのはOK。
 
 ## 開発方針
 
