@@ -2,27 +2,6 @@
 
 このファイルは、このリポジトリでコードを操作する際にClaude Code (claude.ai/code) にガイダンスを提供します。
 
-## 開発コマンド
-
-- `npm run dev` - Turbopackを使用して開発サーバーを起動
-- `npm run build` - 本番用にアプリケーションをビルド
-- `npm run start` - 本番サーバーを起動
-- `npm run lint` - ESLintを実行してコード品質をチェック
-- `npm run db:migrate` - データベースマイグレーションを実行
-- `npm run db:generate` - Prismaクライアントを生成
-- `npm run db:push` - スキーマ変更をデータベースにプッシュ
-- `npm run db:studio` - データベース管理用のPrisma Studioを開く
-
-## セットアップ手順
-
-1. Dockerサービスを開始: `docker-compose up -d`
-2. 依存関係をインストール: `npm install`
-3. データベーススキーマをプッシュ: `npm run db:push`
-4. Prismaクライアントを生成: `npm run db:generate`
-5. 開発サーバーを起動: `npm run dev`
-
-開発中に送信されたメールを確認するには、http://localhost:8025 でMailHog Webインターフェースにアクセスしてください。
-
 ## 設計
 
 ソフトウェアが満たすべき要件・仕様・制約を記載していきます。
@@ -86,6 +65,27 @@ export interface Todo {
 - TODO削除
 
 ### System
+
+#### 開発コマンド
+
+- `npm run dev` - Turbopackを使用して開発サーバーを起動
+- `npm run build` - 本番用にアプリケーションをビルド
+- `npm run start` - 本番サーバーを起動
+- `npm run lint` - ESLintを実行してコード品質をチェック
+- `npm run db:migrate` - データベースマイグレーションを実行
+- `npm run db:generate` - Prismaクライアントを生成
+- `npm run db:push` - スキーマ変更をデータベースにプッシュ
+- `npm run db:studio` - データベース管理用のPrisma Studioを開く
+
+#### セットアップ手順
+
+1. Dockerサービスを開始: `docker-compose up -d`
+2. 依存関係をインストール: `npm install`
+3. データベーススキーマをプッシュ: `npm run db:push`
+4. Prismaクライアントを生成: `npm run db:generate`
+5. 開発サーバーを起動: `npm run dev`
+
+開発中に送信されたメールを確認するには、http://localhost:8025 でMailHog Webインターフェースにアクセスしてください。
 
 #### フレームワーク
 
